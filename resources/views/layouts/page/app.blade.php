@@ -125,9 +125,9 @@
                     <div class="col">
                         <h6 class="text-white font-weight-bold">Colombia</h6>
                         <div class="line-subtitle"></div>
-                        <p class="m-0 text-g-yellow"><i data-feather="chevron-right" class="text-white" stroke-width="1"></i> Calle 26 # 92-32</p>
+                        <p class="m-0 text-g-yellow"><i data-feather="chevron-right" class="text-white" stroke-width="1"></i> Calle 81 # 11-08</p>
                         <p class="m-0 text-g-yellow"><i data-feather="chevron-right" class="text-white" stroke-width="1"></i> Bogotá</p>
-                        <p class="m-0 text-g-yellow"><i data-feather="chevron-right" class="text-white" stroke-width="1"></i> 110911</p>
+{{--                        <p class="m-0 text-g-yellow"><i data-feather="chevron-right" class="text-white" stroke-width="1"></i> 110911</p>--}}
                     </div>
                     <div class="col">
                         <h6 class="text-white font-weight-bold">Compartir en:</h6>
