@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div class="col px-3">
-<!--                        <vue-tel-input v-model="el_telefono"></vue-tel-input>-->
+
                         <vue-tel-input v-model="el_telefono" v-on:country-changed="countryChanged"></vue-tel-input>
                     </div>
                 </div>
