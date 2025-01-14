@@ -63,6 +63,7 @@ class HomepageController extends Controller
         ->with(['user','categoria','imagenes'])
         ->get();
 
+        
         return view('page.home',
             compact(
                 'paquete',
