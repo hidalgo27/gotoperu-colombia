@@ -336,6 +336,7 @@
                 el_textarea: '',
 
                 country: "",
+                country_code: "",
 
                 pickerOptions: {
                     disabledDate(time) {
@@ -375,11 +376,11 @@
         },
         methods: {
             countryChanged(country) {
+                this.country = country.name.replace(/\s*\(.*?\)\s*/g, '').trim()
+                this.country_code = `${country.iso2.toUpperCase()} +${country.dialCode}`;
                 console.log(country)
-
-                this.country = country.name+'('+country.dialCode+')'
-
-                console.log(this.country)
+                console.log("country code: "+this.country_code)
+                console.log("country: "+this.country)
             },
             selectDestino: function (destinoForm, checked) {
                 if (checked){
@@ -447,7 +448,8 @@
                     el_fecha: this.el_fecha,
                     el_telefono: this.el_telefono,
                     el_textarea: this.el_textarea,
-                    country: this.country
+                    country: this.country,
+                    country_code: this.country_code
                 };
                 const self = this;
                 this.loadingdesign = true;

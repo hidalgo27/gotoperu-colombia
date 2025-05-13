@@ -63,7 +63,7 @@ class HomepageController extends Controller
         ->with(['user','categoria','imagenes'])
         ->get();
 
-        
+
         return view('page.home',
             compact(
                 'paquete',
@@ -347,7 +347,7 @@ class HomepageController extends Controller
             "el_fecha" => $formattedDate, // O puedes usar $this->travel_day si es relevante
             "el_telefono" => $request->el_telefono,
             "el_textarea" => $request->el_textarea,
-            'codigo_pais' => $request->country,
+            'codigo_pais' => $request->country_code,
             'country' => $request->country,
             'device' => $device,
             'browser' => $browser,
@@ -356,7 +356,28 @@ class HomepageController extends Controller
             'inquire_date' => $inquireDate
         ];
 
+        $data2 = [
+            "product_id" => 5,
+            "package"=>'',
+            "hotel_category" => array_values($request->category_d),
+            "destinations" => [],
+            "passengers" => $request->pasajeros_d,
+            "duration" => array_values($request->duracion_d),
+            "travel_date"=>$formattedDate,
+            "country"=>$request->country,
+            "country_code"=>$request->country_code,
+            "device"=>$device,
+            "origin"=>"Web",
+            "browser"=>$browser,
+            "name"=>$request->el_nombre,
+            "email"=>$request->el_email,
+            "phone"=>$request->el_telefono,
+            "comment"=>$request->el_textarea,
+            "initial_price"=>0,
+            "inquiry_date"=>$inquireDate,
+            "dialCode"=>'',
 
+        ];
 
         try {
             $client = new Client();
@@ -365,7 +386,12 @@ class HomepageController extends Controller
             ]);
             $responseData = json_decode($response->getBody(), true);
 
-            if ($responseData){
+            $response2 = $client->post('https://app.g1.agency/api/v1/leads/', [
+                'json' => $data2
+            ]);
+            $responseData2 = json_decode($response2->getBody(), true);
+
+            if ($responseData AND $responseData2){
                 try {
                     Mail::send(['html' => 'notifications.page.client-form-design'], ['nombre' => $nombre], function ($messaje) use ($email, $nombre) {
                         $messaje->to($email, $nombre)
@@ -509,13 +535,35 @@ class HomepageController extends Controller
             "el_fecha" => $formattedDate, // O puedes usar $this->travel_day si es relevante
             "el_telefono" => $request->el_telefono,
             "el_textarea" => $request->el_textarea,
-            'codigo_pais' => $request->country,
+            'codigo_pais' => $request->country_code,
             'country' => $request->country,
             'device' => $device,
             'browser' => $browser,
             'origen' => "Web",
             'producto' => "gotoperu.co",
             'inquire_date' => $inquireDate
+        ];
+
+        $data2 = [
+            "product_id" => 5,
+            "package"=>$titulo_package,
+            "hotel_category" => array_values($request->category_d),
+            "destinations" => [],
+            "passengers" => $request->pasajeros_d,
+            "duration" => array_values($request->duracion_d),
+            "travel_date"=>$formattedDate,
+            "country"=>$request->country,
+            "country_code"=>$request->country_code,
+            "device"=>$device,
+            "origin"=>"Web",
+            "browser"=>$browser,
+            "name"=>$request->el_nombre,
+            "email"=>$request->el_email,
+            "phone"=>$request->el_telefono,
+            "comment"=>$request->el_textarea,
+            "initial_price"=>0,
+            "inquiry_date"=>$inquireDate,
+            "dialCode"=>'',
         ];
 
         try {
@@ -526,7 +574,12 @@ class HomepageController extends Controller
             $responseData = json_decode($response->getBody(), true);
 
 
-            if ($responseData){
+            $response2 = $client->post('https://app.g1.agency/api/v1/leads/', [
+                'json' => $data2
+            ]);
+            $responseData2 = json_decode($response2->getBody(), true);
+
+            if ($responseData AND $responseData2){
                 try {
                     Mail::send(['html' => 'notifications.page.client-form-design'], ['nombre' => $nombre], function ($messaje) use ($email, $nombre) {
                         $messaje->to($email, $nombre)
