@@ -308,6 +308,15 @@
                     },
                     {
                         nombre: 'Lago Titicaca', value: '5'
+                    },
+                    {
+                        nombre: 'Lago Titicaca', value: '6'
+                    },
+                    {
+                        nombre: 'Lago Titicaca', value: '7'
+                    },
+                    {
+                        nombre: 'Lago Titicaca', value: '8+'
                     }
                 ],
                 durations_form:[
